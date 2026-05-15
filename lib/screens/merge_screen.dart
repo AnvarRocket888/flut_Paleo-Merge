@@ -315,10 +315,10 @@ class _MergeScreenState extends State<MergeScreen>
         padding: const EdgeInsets.symmetric(horizontal: 16),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount:
-              MediaQuery.of(context).size.width >= 768 ? 6 : 4,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
-          childAspectRatio: 0.82,
+              MediaQuery.of(context).size.width >= 768 ? 5 : 3,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          childAspectRatio: 0.78,
         ),
         itemCount: bones.length,
         itemBuilder: (_, i) => BoneCard(

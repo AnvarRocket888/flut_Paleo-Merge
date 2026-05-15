@@ -24,28 +24,8 @@ class BoneCard extends StatefulWidget {
   State<BoneCard> createState() => _BoneCardState();
 }
 
-class _BoneCardState extends State<BoneCard>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _idleCtrl;
-  late Animation<double> _floatAnim;
+class _BoneCardState extends State<BoneCard> {
   bool _pressed = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _idleCtrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 2000),
-    )..repeat(reverse: true);
-    _floatAnim = Tween<double>(begin: -3.0, end: 3.0).animate(
-        CurvedAnimation(parent: _idleCtrl, curve: Curves.easeInOut));
-  }
-
-  @override
-  void dispose() {
-    _idleCtrl.dispose();
-    super.dispose();
-  }
 
   Color get _epochColor => widget.bone.epoch.color;
   Color get _rarityColor => widget.bone.rarity.color;
@@ -61,14 +41,7 @@ class _BoneCardState extends State<BoneCard>
       child: AnimatedScale(
         scale: _pressed ? 0.92 : 1.0,
         duration: const Duration(milliseconds: 100),
-        child: AnimatedBuilder(
-          animation: _floatAnim,
-          builder: (_, child) => Transform.translate(
-            offset: Offset(0, _floatAnim.value),
-            child: child,
-          ),
-          child: _buildCard(),
-        ),
+        child: _buildCard(),
       )
           .animate()
           .fadeIn(duration: 400.ms)
@@ -124,38 +97,40 @@ class _BoneCardState extends State<BoneCard>
               ),
             ),
           // Content
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Bone emoji
-                Text(
-                  widget.bone.type.emoji,
-                  style: const TextStyle(fontSize: 28),
-                ),
-                const SizedBox(height: 6),
-                // Bone type label
-                Text(
-                  widget.bone.type.label,
-                  style: AppTextStyles.labelMedium.copyWith(
-                    color: AppColors.textPrimary,
-                    fontSize: 11,
+          Positioned.fill(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // Bone emoji
+                  Text(
+                    widget.bone.type.emoji,
+                    style: const TextStyle(fontSize: 42),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 4),
-                // Epoch badge
-                _EpochDot(epoch: widget.bone.epoch),
-                const SizedBox(height: 4),
-                // Rarity label
-                Text(
-                  widget.bone.rarity.emoji,
-                  style: const TextStyle(fontSize: 12),
-                ),
-              ],
+                  // Bone type label
+                  Text(
+                    widget.bone.type.label,
+                    style: AppTextStyles.labelMedium.copyWith(
+                      color: AppColors.textPrimary,
+                      fontSize: 13,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  // Epoch badge
+                  _EpochDot(epoch: widget.bone.epoch),
+                  // Rarity emoji
+                  Text(
+                    widget.bone.rarity.emoji,
+                    style: const TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
           ),
           // Selection checkmark
@@ -190,15 +165,15 @@ class _EpochDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
         color: epoch.color.withAlpha(30),
         border: Border.all(color: epoch.color.withAlpha(120), width: 0.5),
       ),
       child: Text(
         epoch.emoji,
-        style: const TextStyle(fontSize: 10),
+        style: const TextStyle(fontSize: 15),
       ),
     );
   }

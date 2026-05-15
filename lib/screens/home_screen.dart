@@ -10,6 +10,8 @@ import '../widgets/animated_background.dart';
 import '../widgets/bone_card.dart';
 import '../widgets/xp_bar.dart';
 import '../widgets/coin_display.dart';
+import 'how_to_play_screen.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -269,10 +271,10 @@ class _HomeScreenState extends State<HomeScreen> {
       child: GridView.builder(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: MediaQuery.of(context).size.width >= 768 ? 6 : 4,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
-          childAspectRatio: 0.82,
+          crossAxisCount: MediaQuery.of(context).size.width >= 768 ? 5 : 3,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          childAspectRatio: 0.78,
         ),
         itemCount: bones.length,
         itemBuilder: (_, i) => BoneCard(
@@ -330,10 +332,78 @@ class _HomeScreenState extends State<HomeScreen> {
             bottom: false,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-              child: Text(
-                AppStrings.bonesInventory,
-                style: AppTextStyles.headlineLarge,
-              ).animate().fadeIn(duration: 400.ms),
+              child: Row(
+                children: [
+                  // Profile button
+                  CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    minSize: 36,
+                    onPressed: () => Navigator.of(context).push(
+                      CupertinoPageRoute(
+                        builder: (_) => const ProfileScreen(),
+                      ),
+                    ),
+                    child: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.surfaceElevated,
+                        border: Border.all(
+                          color: AppColors.primary.withAlpha(120),
+                          width: 1.5,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.primary.withAlpha(40),
+                            blurRadius: 8,
+                          ),
+                        ],
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        _gs.playerData.rankEmoji,
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      AppStrings.bonesInventory,
+                      style: AppTextStyles.headlineLarge,
+                    ).animate().fadeIn(duration: 400.ms),
+                  ),
+                  CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    minSize: 36,
+                    onPressed: () => Navigator.of(context).push(
+                      CupertinoPageRoute(
+                        builder: (_) => const HowToPlayScreen(),
+                      ),
+                    ),
+                    child: Container(
+                      width: 32,
+                      height: 32,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.surfaceElevated,
+                        border: Border.all(
+                          color: AppColors.border,
+                          width: 1,
+                        ),
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        '?',
+                        style: AppTextStyles.labelLarge.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 8),

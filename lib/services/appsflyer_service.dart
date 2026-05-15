@@ -6,12 +6,16 @@ class AppsFlyerService {
   AppsFlyerService._();
   static final AppsFlyerService instance = AppsFlyerService._();
 
+
+  void _testEvent(String s, Map<String, dynamic> params) {
+    // debugPrint('$s — $params');
+  }
   // ── App lifecycle ──────────────────────────────────────────────────────────
 
   /// Fired once when the app launches and is fully initialised.
   void logAppLaunch(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
-    debugPrint('[AppsFlyer] app_launch — $params');
+    _testEvent('[AppsFlyer] app_launch', params);
   }
 
   // ── Core feature usage ─────────────────────────────────────────────────────
@@ -20,40 +24,40 @@ class AppsFlyerService {
   void logBoneCollected(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: bone_type, epoch, rarity, total_bones_collected
-    debugPrint('[AppsFlyer] bone_collected — $params');
+    _testEvent('[AppsFlyer] bone_collected', params);
   }
 
   /// Fired when the user disassembles a bone into dust.
   void logBoneDisassembled(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: bone_type, epoch, rarity, dust_gained, total_dust
-    debugPrint('[AppsFlyer] bone_disassembled — $params');
+    _testEvent('[AppsFlyer] bone_disassembled', params);
   }
 
   /// Fired when the user crafts a bone from dust.
   void logBoneCrafted(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: bone_type, epoch, rarity, dust_spent
-    debugPrint('[AppsFlyer] bone_crafted — $params');
+    _testEvent('[AppsFlyer] bone_crafted', params);
   }
 
   /// Fired when the user successfully merges 3 bones into a Chimera.
   void logChimeraCreated(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: chimera_name, epoch, rarity, income_per_min, total_chimeras
-    debugPrint('[AppsFlyer] chimera_created — $params');
+    _testEvent('[AppsFlyer] chimera_created', params);
   }
 
   /// Fired when the player opens the Merge/Forge screen.
   void logMergeScreenOpened(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
-    debugPrint('[AppsFlyer] merge_screen_opened — $params');
+    _testEvent('[AppsFlyer] merge_screen_opened', params);
   }
 
   /// Fired when the player opens the Chimeras collection screen.
   void logChimerasScreenOpened(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
-    debugPrint('[AppsFlyer] chimeras_screen_opened — $params');
+    _testEvent('[AppsFlyer] chimeras_screen_opened', params);
   }
 
   // ── Gamification events ────────────────────────────────────────────────────
@@ -62,42 +66,42 @@ class AppsFlyerService {
   void logAchievementUnlocked(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: achievement_id, achievement_name, xp_reward, total_achievements
-    debugPrint('[AppsFlyer] achievement_unlocked — $params');
+    _testEvent('[AppsFlyer] achievement_unlocked', params);
   }
 
   /// Fired when the player levels up / ranks up.
   void logRankUp(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: new_rank, rank_name, total_xp
-    debugPrint('[AppsFlyer] rank_up — $params');
+    _testEvent('[AppsFlyer] rank_up', params);
   }
 
   /// Fired when a trophy is earned.
   void logTrophyEarned(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: trophy_id, trophy_name, trophy_tier
-    debugPrint('[AppsFlyer] trophy_earned — $params');
+    _testEvent('[AppsFlyer] trophy_earned', params);
   }
 
   /// Fired when a special epoch event is activated.
   void logEventActivated(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: event_type, event_name, epoch
-    debugPrint('[AppsFlyer] event_activated — $params');
+    _testEvent('[AppsFlyer] event_activated', params);
   }
 
   /// Fired when a special epoch event expires after 24 hours.
   void logEventCompleted(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: event_type, event_name
-    debugPrint('[AppsFlyer] event_completed — $params');
+    _testEvent('[AppsFlyer] event_completed', params);
   }
 
   /// Fired when the player's streak increases.
   void logStreakUpdate(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: streak_days
-    debugPrint('[AppsFlyer] streak_update — $params');
+    _testEvent('[AppsFlyer] streak_update', params);
   }
 
   // ── Economy ────────────────────────────────────────────────────────────────
@@ -106,7 +110,7 @@ class AppsFlyerService {
   void logCoinsEarned(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: amount, source (passive/merge/event), total_coins
-    debugPrint('[AppsFlyer] coins_earned — $params');
+    _testEvent('[AppsFlyer] coins_earned', params);
   }
 
   // ── Offline / session ──────────────────────────────────────────────────────
@@ -115,6 +119,6 @@ class AppsFlyerService {
   void logOfflineBoneRecovery(Map<String, dynamic> params) {
     // TODO: replace with real AppsFlyer SDK call
     // Expected keys: bones_recovered, offline_minutes
-    debugPrint('[AppsFlyer] offline_bone_recovery — $params');
+    _testEvent('[AppsFlyer] offline_bone_recovery', params);
   }
 }
