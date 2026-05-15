@@ -1,0 +1,51 @@
+:root {
+  /* Backgrounds */
+  --color-background: #0A0A14;
+  --color-surface: #141428;
+  --color-surface-elevated: #1E1E3A;
+  --color-card: #1A1A30;
+  --color-border: #2A2A4A;
+
+  /* Primary palette — deep alchemical purple */
+  --color-primary: #8B4FE8;
+  --color-primary-glow: #A56BFF;
+  --color-primary-dark: #5C2FA8;
+
+  /* Secondary — fossil amber/gold */
+  --color-secondary: #D4920E;
+  --color-secondary-glow: #FFB830;
+
+  /* Accents */
+  --color-accent-teal: #2EC9A8;
+  --color-accent-red: #E85050;
+  --color-accent-pink: #E84FA0;
+
+  /* Text */
+  --color-text-primary: #EDE8F5;
+  --color-text-secondary: #9B96B0;
+  --color-text-hint: #605A78;
+  --color-text-on-primary: #FFFFFF;
+
+  /* Epoch colors */
+  --color-epoch-mesozoic: #4CAF6A;
+  --color-epoch-mesozoic-glow: #6FFF90;
+  --color-epoch-ice-age: #4A9EDE;
+  --color-epoch-ice-age-glow: #7DC6FF;
+  --color-epoch-stone-age: #C87D3A;
+  --color-epoch-stone-age-glow: #FFAA5A;
+
+  /* Rarity colors */
+  --color-rarity-common: #9BA8B5;
+  --color-rarity-uncommon: #4CAF6A;
+  --color-rarity-rare: #4A9EDE;
+  --color-rarity-epic: #8B4FE8;
+  --color-rarity-legendary: #D4920E;
+
+  /* UI elements */
+  --color-xp-bar: #8B4FE8;
+  --color-coin: #D4920E;
+  --color-dust: #C4B8E0;
+  --color-success: #4CAF6A;
+  --color-warning: #D4920E;
+  --color-error: #E85050;
+}
